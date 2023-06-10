@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI Web App</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        padding: 20px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-group input[type="text"],
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      .form-actions {
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>AI Web App</h1>
+    <form action="/Predict" method="POST">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="patientName">Patient Name:</label>
+            <input
+              type="text"
+              id="patientName"
+              name="patientName"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="male" class="form-control">
+              <option value="1">Male</option>
+              <option value="0">Female</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="age">Age:</label>
+            <input
+              type="text"
+              id="age"
+              name="age"
+              value="39"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="education">Education:</label>
+            <select id="education" name="education" class="form-control">
+              <option value="1">Some high school</option>
+              <option value="2">High school or GED</option>
+              <option value="3">Some college or vocational school</option>
+              <option value="4">College</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="currentSmoker">Current Smoker:</label>
+            <select
+              id="currentSmoker"
+              name="currentSmoker"
+              class="form-control"
+            >
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cigsPerDay">Cigarettes per Day:</label>
+            <input
+              type="text"
+              id="cigsPerDay"
+              name="cigsPerDay"
+              value="0"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="BPMeds">Blood Pressure Medication:</label>
+            <select id="BPMeds" name="BPMeds" class="form-control">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="prevalentStroke">Prevalent Stroke:</label>
+            <select
+              id="prevalentStroke"
+              name="prevalentStroke"
+              class="form-control"
+            >
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="prevalentHyp">Prevalent Hypertension:</label>
+            <select id="prevalentHyp" name="prevalentHyp" class="form-control">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="diabetes">Diabetes:</label>
+            <select id="diabetes" name="diabetes" class="form-control">
+              <option value="1">Yes</option>
+              <option value="0">No</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="totChol">Total Cholesterol:</label>
+            <input
+              type="text"
+              id="totChol"
+              name="totChol"
+              value="195"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="sysBP">Systolic Blood Pressure:</label>
+            <input
+              type="text"
+              id="sysBP"
+              name="sysBP"
+              value="106"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="diaBP">Diastolic Blood Pressure:</label>
+            <input
+              type="text"
+              id="diaBP"
+              name="diaBP"
+              value="70"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="BMI">Body Mass Index (BMI):</label>
+            <input
+              type="text"
+              id="BMI"
+              name="BMI"
+              value="26.97"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="heartRate">Heart Rate:</label>
+            <input
+              type="text"
+              id="heartRate"
+              name="heartRate"
+              value="80"
+              class="form-control"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="glucose">Glucose:</label>
+            <input
+              type="text"
+              id="glucose"
+              name="glucose"
+              value="77"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <input
+          type="submit"
+          value="Predict"
+          class="btn btn-primary"
+          style="width: 300px"
+        />
+      </div>
+      <form action="{{ url_for('dashboard') }}" method="GET">
+        <button type="submit">Go to Dashboard</button>
+      </form>
+    </form>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

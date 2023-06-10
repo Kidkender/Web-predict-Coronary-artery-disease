@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AI Web App - Results</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-pzjw8j+ua3qwlkk0+9qyjyypgrz5/OBf/ayhoC+jUaxXy5N8OW/Sf4+9qlzPqNPp"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-bottom: 20px;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .btn {
+        margin-right: 10px;
+      }
+
+      .btn-primary {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+
+      .btn-primary:hover {
+        color: #fff;
+        background-color: #0069d9;
+        border-color: #0062cc;
+      }
+
+      .btn-secondary {
+        color: #fff;
+        background-color: #6c757d;
+        border-color: #6c757d;
+      }
+
+      .btn-secondary:hover {
+        color: #fff;
+        background-color: #5a6268;
+        border-color: #545b62;
+      }
+
+      .mt-2 {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-5">AI Web App - Results</h1>
+      <h2>Prediction:</h2>
+      <p>{{ prediction }}</p>
+      {% if prediction == "This patient does have coronary artery disease" %}
+      <div class="image">
+        <img
+          src="../public/images/sad.jpg"
+          alt="Coronary Artery Disease"
+          width="300px"
+          height="300px"
+        />
+      </div>
+      {% else %}
+      <div class="image">
+        <img
+          src="../public/images/happy.jpg"
+          alt="No Coronary Artery Disease"
+          width="300px"
+          height="300px"
+        />
+      </div>
+      {% endif %}
+      <form action="/logout" method="GET">
+        <input class="btn btn-primary" type="submit" value="Logout" />
+      </form>
+      <form action="{{ url_for('index') }}" method="GET">
+        <button class="btn btn-secondary mt-2" type="submit">
+          Back to Input Form
+        </button>
+      </form>
+      <form action="/dashboard" method="GET">
+        <input
+          class="btn btn-secondary mt-2"
+          type="submit"
+          value="Go to Dashboard"
+        />
+      </form>
+    </div>
+  </body>
+</html>
